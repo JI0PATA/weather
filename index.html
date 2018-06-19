@@ -62,9 +62,30 @@
                             </v-card-title>
                             <v-card-text>
                                 <v-select
-                                        :items="select"
-                                        label="A Select List"
-                                        item-value="text"
+                                        :items="select_countrys"
+                                        label="A Select Country"
+                                        item-value="code"
+                                        item-text="name"
+                                        @input="changeCountry"
+                                        v-model="selectedCountry"
+                                        autocomplete
+                                ></v-select>
+                                <v-select
+                                        :items="select_regions"
+                                        label="A Select Region"
+                                        item-value="region"
+                                        item-text="region"
+                                        v-model="selectedRegion"
+                                        autocomplete
+                                        @input="changeRegion"
+                                ></v-select>
+                                <v-select
+                                        :items="select_states"
+                                        label="A Select State"
+                                        item-text="city"
+                                        v-model="selectedState"
+                                        :key=""
+                                        autocomplete
                                 ></v-select>
                             </v-card-text>
                             <v-card-actions>
@@ -83,7 +104,6 @@
 <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.map"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.16.0/vuedraggable.min.js"></script>
