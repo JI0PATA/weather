@@ -13,8 +13,10 @@
         <v-content>
             <v-container>
                 <h2>Your weather</h2>
-                <v-layout row :wrap="true">
-                    <v-flex xs12 sm6 md4 lg3 d-flex v-for="(state, index) in states" @click="states.splice(index, 1)" class="cards__item">
+                <draggable v-model="states" element="v-layout" row wrap @start="drag=true" @end="drag=false">
+                    <v-flex xs12 sm6 md4 lg3 d-flex v-for="(state, index) in states" @click="states.splice(index, 1)"
+                            class="cards__item"
+                    :key="state.id">
                         <v-card>
                             <v-card-media
                                     class="white--text"
@@ -47,7 +49,7 @@
                             </v-card-media>
                         </v-card>
                     </v-flex>
-                </v-layout>
+                </draggable>
             </v-container>
         </v-content>
         <template>
@@ -82,6 +84,9 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.map"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.7.0/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.16.0/vuedraggable.min.js"></script>
 
 <script src="index.js"></script>
 </body>

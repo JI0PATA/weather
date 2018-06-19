@@ -3,11 +3,11 @@ let app = new Vue({
     data: {
         states: [
             {id: 1, name: 'Kazan', temp: '+10'},
-            {id: 1, name: 'Kazan', temp: '+10'},
-            {id: 1, name: 'Kazan', temp: '+10'},
-            {id: 1, name: 'Kazan', temp: '+10'},
-            {id: 1, name: 'Kazan', temp: '+10'},
-            {id: 1, name: 'Kazan', temp: '+10'},
+            {id: 2, name: 'Kazan', temp: '+11'},
+            {id: 3, name: 'Kazan', temp: '+12'},
+            {id: 4, name: 'Kazan', temp: '+13'},
+            {id: 5, name: 'Kazan', temp: '+14'},
+            {id: 6, name: 'Kazan', temp: '+15'},
         ],
         select: [
             {text: 'Kazan'},
@@ -26,6 +26,6 @@ let app = new Vue({
             })
             .catch(e => {
                 console.log(e);
-            })
+            });
     }
 });
