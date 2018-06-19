@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+<div id="app">
+    <v-app>
+        <v-content>
+            <v-container>
+                <h2>Your weather</h2>
+                <v-layout row :wrap="true">
+                    <v-flex xs12 sm6 md4 lg3 d-flex v-for="(state, index) in states" @click="states.splice(index, 1)" class="cards__item">
+                        <v-card>
+                            <v-card-media
+                                    class="white--text"
+                                    height="200px"
+                                    src="https://vuetifyjs.com/static/doc-images/cards/docks.jpg"
+                            >
+                                <v-container fill-height fluid>
+                                    <v-layout fill-height>
+                                        <v-flex xs12 align-end flexbox>
+                                            <span class="headline">{{ state.name }}</span><span class="headline temp">{{ state.temp }}</span>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </v-card-media>
+                        </v-card>
+                    </v-flex>
+                    <v-flex xs12 sm6 md4 lg3 d-flex class="card__add-state" @click.stop="dialog = true">
+                        <v-card dark>
+                            <v-card-media
+                                    class="white--text"
+                                    height="200px"
+                            >
+                                <v-container fill-height fluid>
+                                    <v-layout fill-height align-center>
+                                        <v-flex xs12 flexbox class="text-sm-center">
+                                            <span class="add_state">+</span>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-container>
+                            </v-card-media>
+                        </v-card>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-content>
+        <template>
+            <div>
+                <v-layout row justify-center>
+                    <v-dialog v-model="dialog" max-width="500px">
+                        <v-card>
+                            <v-card-title>
+                                Choose state
+                            </v-card-title>
+                            <v-card-text>
+                                <v-select
+                                        :items="select"
+                                        label="A Select List"
+                                        item-value="text"
+                                ></v-select>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn color="primary" flat @click.stop="addNewState">Add</v-btn>
+                                <v-btn color="error" @click.stop="dialog=false">Close</v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-dialog>
+                </v-layout>
+            </div>
+        </template>
+    </v-app>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.map"></script>
+
+<script src="index.js"></script>
+</body>
+</html>
